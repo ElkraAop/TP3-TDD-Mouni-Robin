@@ -35,4 +35,12 @@ class WelcomeTest {
 	void testNull() {
 		assertEquals("Hello, my friend", w.welcome(null));
 	}
+	@Test
+	void testCRIS() {
+		assertEquals("HELLO, JEREMY", w.welcome("JEREMY"));
+	}
+	void testMajDebut() {
+		assertEquals("Hello, JErry", w.welcome("jErry"));
+	}
+
 }
