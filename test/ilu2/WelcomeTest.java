@@ -12,11 +12,27 @@ class WelcomeTest {
 		this.w = new Welcome();
 	}
 	@Test
-	void test() {
+	void testBob() {
 		assertEquals("Hello, Bob", w.welcome("bob"));
-		assertEquals("Hello, Andreas", w.welcome("andreas"));
-		assertEquals("Hello, Billi", w.welcome("billi"));
-		
 	}
-
+	@Test
+	void testAndreas() {
+		assertEquals("Hello, Andreas", w.welcome("andreas"));
+	}
+	@Test
+	void testBilli() {
+		assertEquals("Hello, Billi", w.welcome("billi"));
+	}
+	@Test
+	void testBlanc() {
+		assertEquals("Hello, my friend", w.welcome("   "));
+	}
+	@Test
+	void testVide() {
+		assertEquals("Hello, my friend", w.welcome(""));
+	}
+	@Test
+	void testNull() {
+		assertEquals("Hello, my friend", w.welcome(null));
+	}
 }
