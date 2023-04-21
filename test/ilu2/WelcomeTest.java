@@ -47,5 +47,17 @@ class WelcomeTest {
 	void testDeuxNomEnImput() {
 		assertEquals("Hello, Leo, Lea", w.welcome("leo, lea"));
 	}
+	@Test
+	void testPlusieursNomEnImput() {
+		assertEquals("Hello, Leo, Lea, Theo", w.welcome("leo, lea, theo"));
+	}
+	@Test
+	void testPlusieursNomEnImput2() {
+		assertEquals("Hello, Leo, Lea, Theo, Lucas", w.welcome("leo, lea, theo, Lucas"));
+	}
+	@Test
+	void testPlusieursNomEnImput3() {
+		assertEquals("Hello, Leo, Lea, Theo, Lucas", w.welcome("leo, lea, theo, lucas"));
+	}
 
 }
