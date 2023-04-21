@@ -39,8 +39,13 @@ class WelcomeTest {
 	void testCRIS() {
 		assertEquals("HELLO, JEREMY", w.welcome("JEREMY"));
 	}
+	@Test
 	void testMajDebut() {
 		assertEquals("Hello, JErry", w.welcome("jErry"));
+	}
+	@Test
+	void testDeuxNomEnImput() {
+		assertEquals("Hello, Leo, Lea", w.welcome("leo, lea"));
 	}
 
 }
