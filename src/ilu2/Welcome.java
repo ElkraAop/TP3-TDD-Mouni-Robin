@@ -7,10 +7,7 @@ public class Welcome {
 		switch(caseDetection(nom)) {
 		case 1:
 			sb.append("Hello, ");
-			sb.append(Character.toUpperCase(nom.charAt(0)));
-			for(int i =1; i<nom.length();i++) {
-				sb.append(nom.charAt(i));
-			}
+			appendMajPremierChar(nom, sb);
 			break;
 		case 2 :
 			sb.append("Hello, my friend");
@@ -25,34 +22,51 @@ public class Welcome {
 		return sb.toString();
 	}
 	
+	
 	private static int caseDetection(String nom) {
 		int resultat = 1;
 		if(nom==null||nom.isBlank()||nom.isEmpty()) {
 			resultat = 2;
 		}else if(nom.equals(nom.toUpperCase())) {
 			resultat = 3;
-		}else if(nom.contains(", ")) {
+		}else if(nom.split(",").length>1) {
 			return 4;
 		}
 		return resultat;
 	}
 
 	private static void gestionCasNomMultiples(String nom, StringBuilder sb) {
+		String[] tabString = nom.split(", ");
+		StringBuilder maj = new StringBuilder();
 		sb.append("Hello, ");
-		sb.append(Character.toUpperCase(nom.charAt(0)));
-		int i = 1;
-		int prochaineModif = 0;
-		while(i<nom.length()) {
-			if(nom.charAt(i) == ',') {
-				prochaineModif = i+2;
-			}
-			if(i==prochaineModif) {
-				sb.append(Character.toUpperCase(nom.charAt(i)));
+		for(int i = 0;i<tabString.length;i++) {
+			if(tabString[i]!=tabString[i].toUpperCase()) {
+				appendMajPremierChar(tabString[i], sb);
+				if(i<tabString.length-1) {
+					sb.append(", ");
+				}
 			}else {
-				sb.append(nom.charAt(i));
+				if(maj.isEmpty()) {
+					maj.append(". AND HELLO ");
+				}else {
+					maj.append(", ");
+				}
+				maj.append(tabString[i]);
+			}	
+		}
+		if(!maj.isEmpty()) {
+			if((tabString[tabString.length-1].equals(tabString[tabString.length-1].toUpperCase()))) {
+				sb.deleteCharAt(sb.length()-1);
+				sb.deleteCharAt(sb.length()-1);
 			}
-			i++;
-			
+			sb.append(maj.toString());
+			sb.append(" !");
+		}
+	}
+	private static void appendMajPremierChar(String nom, StringBuilder sb) {
+		sb.append(Character.toUpperCase(nom.charAt(0)));
+		for(int i =1; i<nom.length();i++) {
+			sb.append(nom.charAt(i));
 		}
 	}
 }

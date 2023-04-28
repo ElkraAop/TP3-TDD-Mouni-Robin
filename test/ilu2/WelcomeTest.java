@@ -59,5 +59,12 @@ class WelcomeTest {
 	void testPlusieursNomEnImput3() {
 		assertEquals("Hello, Leo, Lea, Theo, Lucas", w.welcome("leo, lea, theo, lucas"));
 	}
+	@Test
+	void testPlusieursNomEnImputAvecCris() {
+		assertEquals("Hello, Leo, Lea. AND HELLO LUCAS !", w.welcome("leo, lea, LUCAS"));
+		assertEquals("Hello, Leo, Lea. AND HELLO LUCAS !", w.welcome("leo, LUCAS, lea"));
+		assertEquals("Hello, Leo. AND HELLO LUCAS, LEA !", w.welcome("leo, LUCAS, LEA"));
+	}
+
 
 }
