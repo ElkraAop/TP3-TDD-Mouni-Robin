@@ -37,7 +37,7 @@ class WelcomeTest {
 	}
 	@Test
 	void testCRIS() {
-		assertEquals("HELLO, JEREMY", w.welcome("JEREMY"));
+		assertEquals("HELLO, JEREMY !", w.welcome("JEREMY"));
 	}
 	@Test
 	void testMajDebut() {
@@ -45,25 +45,29 @@ class WelcomeTest {
 	}
 	@Test
 	void testDeuxNomEnImput() {
-		assertEquals("Hello, Leo, Lea", w.welcome("leo, lea"));
+		assertEquals("Hello, Leo and Lea", w.welcome("leo, lea"));
 	}
 	@Test
 	void testPlusieursNomEnImput() {
-		assertEquals("Hello, Leo, Lea, Theo", w.welcome("leo, lea, theo"));
+		assertEquals("Hello, Leo, Lea and Theo", w.welcome("leo, lea, theo"));
 	}
 	@Test
 	void testPlusieursNomEnImput2() {
-		assertEquals("Hello, Leo, Lea, Theo, Lucas", w.welcome("leo, lea, theo, Lucas"));
+		assertEquals("Hello, Leo, Lea, Theo and Lucas", w.welcome("leo, lea, theo, Lucas"));
 	}
 	@Test
 	void testPlusieursNomEnImput3() {
-		assertEquals("Hello, Leo, Lea, Theo, Lucas", w.welcome("leo, lea, theo, lucas"));
+		assertEquals("Hello, Leo, Lea, Theo and Lucas", w.welcome("leo, lea, theo, lucas"));
 	}
 	@Test
 	void testPlusieursNomEnImputAvecCris() {
-		assertEquals("Hello, Leo, Lea. AND HELLO LUCAS !", w.welcome("leo, lea, LUCAS"));
-		assertEquals("Hello, Leo, Lea. AND HELLO LUCAS !", w.welcome("leo, LUCAS, lea"));
-		assertEquals("Hello, Leo. AND HELLO LUCAS, LEA !", w.welcome("leo, LUCAS, LEA"));
+		assertEquals("Hello, Leo. AND HELLO, LUCAS !", w.welcome("leo, LUCAS"));
+	}
+	@Test
+	void testAndPourLeDernierNom() {
+		assertEquals("Hello, Leo and Lea. AND HELLO, LUCAS !", w.welcome("leo, lea, LUCAS"));
+		assertEquals("Hello, Leo. AND HELLO, LUCAS AND LEA !", w.welcome("leo, LUCAS, LEA"));
+		assertEquals("Hello, Leo. AND HELLO, LUCAS AND LEA !", w.welcome("LUCAS, leo, LEA"));
 	}
 
 
